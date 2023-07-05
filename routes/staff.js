@@ -103,8 +103,9 @@ if(error){
   })
 }*/
    console.log(staff_id);
-  const sql=`SELECT * FROM staff
-             WHERE staff_id=${staff_id}`;
+  const sql=`SELECT * FROM staff s,department d
+              WHERE s.staff_id=${staff_id}
+              AND s.department_id= d.department_id`;
   connection.query(sql,(err,result)=>{
       if(result.length>0){
            res.send({
