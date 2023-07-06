@@ -144,25 +144,32 @@ app.get('/admin/availableTechnician/:id',(req,res)=>{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                      /*ASSIGN A TECHNICIAN*/
-app.post('/admin/assignTechnician/:id',(req,res)=>{
-  let tech_id=req.body.tech_id;
-  let admin_id=req.body.admin_id;
-  const sql=`UPDATE work_request 
-            SET progress='in-progress',
+app.post('/admin/assignTechnician/:id', (req, res) => {
+    let tech_id = req.body.tech_id;
+    let admin_id = req.body.admin_id;
+    var expected_date = new Date(req.body.expected_date)
+    // assigned_date='${new Date().toJSON().slice(0, 10)}',
+    const sql = `UPDATE work_request 
+            SET progress='assign',
                 tech_id='${tech_id}',
-                 assigned_date='${ new Date().toJSON().slice(0, 10)}',
+                 assigned_date='${new Date().toJSON().slice(0, 10)}',
+                 expected_date = '${expected_date.toJSON().slice(0, 10)}',
                  admin_id='${admin_id}'
             WHERE id='${req.params.id}'`
-  connection.query(sql,(err,result)=>{
-    if(err){
-      res.send({message:"An error occured",
-        success:false});
-  }
-  else{
-    res.send({message:'Technician assigned to task',success:true}); 
-   }
+    connection.query(sql, (err, result) => {
+      if (err) {
+        res.send({
+          message: "An error occured",
+          success: false
+        });
+        console.log({message: "An error occured", err})
+      }
+      else {
+        res.send({ message: 'Technician assigned to task', success: true });
+        console.log({ message: 'Technician assigned to task', success: true });
+      }
+    });
   });
-});
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /**                                          VIEW TECHNICIAN PROGRESS                                                      */
  app.get('/admin/viewProgress/:id',(req,res)=>{
