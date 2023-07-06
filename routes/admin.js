@@ -87,7 +87,7 @@ app.get('/admin/getExpectedDate/:id',(req,res)=>{
 
 app.put('/admin/setPriority/:id',(req,res)=>{
   let data ={
-    priority:req.body.priority,
+    //priority:req.body.priority,
     expected_date:req.body.expected_date
   };
     const sql_2=`UPDATE work_request 
