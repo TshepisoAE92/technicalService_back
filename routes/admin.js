@@ -614,6 +614,7 @@ app.get('/admin/getTotalClossedLogs',(req,res)=>{
                                     res.send({averageCompleted:averageComplete,/////average percentage of closed logs
                                     averageClosed:averageClosed,///The average percentage of closed logs
                                     LogResolutionRate:rate,//// LogResolutionRate the avverage number of days it takes to resolve a log
+                                    averageActive:averageActive,
                                     averageInProgress:averageInprogress,///The average percentage of inProgress logs
                                     averagePending:averagePending,///////The average percentage of pending log
                                     averageOnhold:averageOnhold,///Avarages of on_hold requests
