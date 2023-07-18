@@ -635,7 +635,7 @@ app.get('/admin/getTotalClossedLogs',(req,res)=>{
                                   
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**                                                                                                                                            */
-  app.get('/admin/aggregate',(req,res)=>{
+  app.get('/aggregate',(req,res)=>{
     const sql=`Select category,count(id ) AS total
                 FROM work_request
                 WHERE status='active'
