@@ -600,6 +600,7 @@ app.get('/admin/getTotalClossedLogs',(req,res)=>{
                                     let rate;
                                     let days=0;
                                     if(result1.length>0 && result2.length>0 && result3.length>0 ){
+                                    averageActive= Math.round((result8[0].active/result1[0].total_tasks)*100);
                                     averageComplete=Math.round((result2[0].complete/result1[0].total_tasks)*100);
                                     averageClosed=Math.round((result3[0].closed/result1[0].total_tasks)*100);
                                     averageInprogress=Math.round((result5[0].in_progress/result1[0].total_tasks)*100);
